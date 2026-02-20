@@ -9,7 +9,7 @@ terraform {
 
 provider "aws" {
   # Configuration options
-  region = "eu-north-1"
+  region = var.region
 }
 
 resource "aws_s3_bucket" "tf-test-aws-s3-bucket" {
