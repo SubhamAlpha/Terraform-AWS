@@ -1,7 +1,18 @@
+# Local .terraform folder
 .terraform/
+
+# Terraform state files (don't push these, use an S3 backend later!)
 *.tfstate
 *.tfstate.backup
-.terraform.lock.hcl.env
-.terraform/
-*.tfstate*
-*.env
+*.tfstate.lock.info
+
+# Secrets and Variables
+*.tfvars
+*.tfvars.json
+.env
+
+# Crash logs
+crash.log
+
+# Ignore provider plugins
+.terraform.lock.hcl
