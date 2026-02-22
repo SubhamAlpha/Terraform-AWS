@@ -63,3 +63,13 @@ resource "aws_route_table_association" "public_subnet_association_tf" {
     subnet_id = aws_subnet.public_subnet_tf.id
     route_table_id = aws_route_table.my_route_table_tf.id
 } 
+
+resource "aws_instance" "myserver01" {
+    
+  ami  = "ami-073130f74f5ffb161" # Amazon Linux 2 AMI (HVM), SSD Volume Type
+  instance_type = "t3.micro"
+  subnet_id = aws_subnet.public_subnet_tf.id
+  tags = {
+    Name = "myserver01"
+  }
+}
