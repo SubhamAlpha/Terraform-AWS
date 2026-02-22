@@ -57,3 +57,9 @@ resource "aws_route_table" "my_route_table_tf" {
       Name="tf-route-table"
     }
 } 
+
+#associating public subnet with routing table
+resource "aws_route_table_association" "public_subnet_association_tf" {
+    subnet_id = aws_subnet.public_subnet_tf.id
+    route_table_id = aws_route_table.my_route_table_tf.id
+} 
