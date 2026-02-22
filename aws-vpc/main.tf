@@ -29,3 +29,11 @@ resource "aws_subnet" "private_subnet_tf" {
     }
 }
 
+#public subnet
+resource "aws_subnet" "public_subnet_tf" {
+    vpc_id = aws_vpc.my_vpc_tf.id
+    cidr_block = "10.0.2.0/24"
+    tags = {
+      Name="tf-public-subnet"
+    }
+}
