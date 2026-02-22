@@ -37,3 +37,23 @@ resource "aws_subnet" "public_subnet_tf" {
       Name="tf-public-subnet"
     }
 }
+
+#internet gateway
+resource "aws_internet_gateway" "my_igw_tf" {
+    vpc_id = aws_vpc.my_vpc_tf.id
+    tags = {
+      Name="tf-igw"
+    }
+}
+
+#routing table
+resource "aws_route_table" "my_route_table_tf" {
+    vpc_id = aws_vpc.my_vpc_tf.id
+    route {
+        cidr_block = "0.0.0.0/0"  #adding rule
+        gateway_id = aws_internet_gateway.my_igw_tf.id #pointing to igw
+    }
+    tags = {
+      Name="tf-route-table"
+    }
+} 
