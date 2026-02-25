@@ -3,6 +3,13 @@ resource "aws_instance" "nginx_server" {
   instance_type = "t3.micro"           # Updated to Free Tier eligible instance
   subnet_id     = aws_subnet.public_subnet_tf.id
   
+  user_data = <<-EOF
+              #!/bin/bash
+              sudo yum update -y
+              sudo amazon-linux-extras install nginx1.12 -y
+              sudo systemctl start nginx
+              sudo systemctl enable nginx
+              EOF
   tags = {
     Name = "nginx-server"
   }
