@@ -3,6 +3,7 @@ resource "aws_instance" "nginx_server" {
   instance_type = "t3.micro"           # Updated to Free Tier eligible instance
   subnet_id     = aws_subnet.public_subnet_tf.id
   security_groups = [aws_security_group.ngnix_sg.id]
+  associate_public_ip_address = true 
   
   user_data = <<-EOF
               #!/bin/bash
