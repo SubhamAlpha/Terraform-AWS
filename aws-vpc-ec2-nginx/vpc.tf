@@ -2,7 +2,7 @@
 resource "aws_vpc" "my_vpc_tf" {
     cidr_block = "10.0.0.0/16"
     tags = {
-      Name="tf-vpc"
+      Name="tf-vpc-nginx"
     }
 }
 
@@ -11,7 +11,7 @@ resource "aws_subnet" "private_subnet_tf" {
     vpc_id = aws_vpc.my_vpc_tf.id
     cidr_block = "10.0.1.0/24"
     tags = {
-      Name="tf-private-subnet"
+      Name="vpc-private-subnet"
     }
 }
 
