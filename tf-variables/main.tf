@@ -15,7 +15,7 @@ provider "aws" {
 resource "aws_instance" "myserver" {
     
   ami  = "ami-0aaa636894689fa47" # Amazon Linux 2 AMI (HVM), SSD Volume Type
-  instance_type = "t3.micro"
+  instance_type = var.aws_instance_type
 
   tags = {
     Name= "tf-instance-var"
@@ -23,7 +23,7 @@ resource "aws_instance" "myserver" {
 
   root_block_device {
     delete_on_termination = true
-    volume_size           = 8
+    volume_size           = var.volumn_size
     volume_type           = "gp2"
   }
 }
