@@ -20,4 +20,10 @@ resource "aws_instance" "myserver" {
   tags = {
     Name= "tf-instance-var"
   }
+
+  root_block_device {
+    delete_on_termination = true
+    volume_size           = 8
+    volume_type           = "gp2"
+  }
 }
