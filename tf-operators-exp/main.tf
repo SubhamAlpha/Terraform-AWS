@@ -32,3 +32,16 @@ variable "map_var" {
     key2 = 2
   }
 }
+
+#local variable using for loop to create a list of squares
+locals {
+    add=2+2
+    mult=2*2
+    div=10/2
+    squares = [for num in var.num_list : num * num]
+}
+
+output "local_add" {
+  value = local.add
+
+}
