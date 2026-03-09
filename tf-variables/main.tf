@@ -17,9 +17,9 @@ resource "aws_instance" "myserver" {
   ami  = "ami-0aaa636894689fa47" # Amazon Linux 2 AMI (HVM), SSD Volume Type
   instance_type = var.aws_instance_type
 
-  tags = {
-    Name= "tf-instance-var"
-  }
+  tags = merge(var.additional_tags, {
+  Name= "tf-instance-var"
+})
 
   root_block_device {
     delete_on_termination = true
@@ -27,3 +27,5 @@ resource "aws_instance" "myserver" {
     volume_type           = "gp2"
   }
 }
+
+
