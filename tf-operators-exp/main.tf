@@ -39,6 +39,10 @@ locals {
     mult=2*2
     div=10/2
     squares = [for num in var.num_list : num * num]
+
+    double = [for num in var.num_list : num * 2]
+
+    map_keys = [for key, value in var.map_var : key]
 }
 
 output "local_add" {
