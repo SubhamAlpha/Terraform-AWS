@@ -46,6 +46,6 @@ locals {
 }
 
 output "local_add" {
-  value = local.add
+  value = local.map_keys
 
 }
