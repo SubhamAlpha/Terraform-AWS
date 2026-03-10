@@ -13,7 +13,7 @@ provider "aws" {
 }
 
 locals {
-  project="project-01"
+  project="project"
 }
 
     resource "aws_vpc" "mul_vpc" {
@@ -38,4 +38,8 @@ locals {
       ami = var.ec2_config[count.index].ami
       instance_type = var.ec2_config[count.index].instance_type
       subnet_id = element(aws_subnet.main.*.id, count.index % length(aws_subnet.main))
+
+      tags = {
+        Name= "${local.project}-instance-${count.index}"
+      }
     }
