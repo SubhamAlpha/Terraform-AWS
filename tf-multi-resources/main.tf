@@ -30,5 +30,12 @@ locals {
     count = 4
     tags = {
         Name= "${local.project}-subnet-${count.index + 1}"
+        }
     }
+
+    resource "aws_instance" "mainEC2" {
+        count = length(var.ec2_config)
+      ami = var.ec2_config[count.index].ami
+      instance_type = var.ec2_config[count.index].instance_type
+      subnet_id = element(aws_subnet.main.*.id, count.index % length(aws_subnet.main))
     }
