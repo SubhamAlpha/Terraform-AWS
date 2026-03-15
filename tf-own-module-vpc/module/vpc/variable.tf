@@ -17,5 +17,10 @@ variable "subnet-config" {
     az= string
 
   }))
+  validation {
+
+    condition = alltrue([for config in var.subnet-config : can(cidrnetmask(config.cidr_block))])
+    error_message = "Invalid subnet configuration"
+  }
   
 }
